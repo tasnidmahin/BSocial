@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from django.views.generic import TemplateView
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -40,4 +41,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     path('admin/', admin.site.urls),
+    path('',TemplateView.as_view(template_name='index.html')),
 ]
