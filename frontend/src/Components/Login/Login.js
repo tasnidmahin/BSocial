@@ -3,7 +3,17 @@ import './Login.css';
 import login_background from '../../images/background/2.jpg'
 import Header from '../Header/Header';
 
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from '../SignUp/Form';
+
 const Login = () => {
+    
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     return (
         <div>
@@ -24,7 +34,7 @@ const Login = () => {
                                 <br></br>
                                 <button className="login-button"> Log into your account</button>
                             </form>
-                            <p className="signup-paragraph mt-2">Already have an account? Signup </p>
+                            <p className="signup-paragraph mt-2">Already have an account?  <Button variant="primary" onClick={handleShow}>Signup</Button></p>
                         </div>
                         <div className="container login-page-lower-area">
                             <button className="semi-transparent-button">About Us</button>
@@ -34,7 +44,26 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>SIgn Up</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <Form></Form>
+</Modal.Body>
+{/*
+<Modal.Footer>
+<Button variant="secondary" onClick={handleClose}>
+    Close
+</Button>
+<Button variant="primary" onClick={handleClose}>
+    Save Changes
+</Button>
+</Modal.Footer>
+*/}
+</Modal>
         </div>
     );
 };
+
 export default Login;
